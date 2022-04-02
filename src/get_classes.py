@@ -1,12 +1,11 @@
 import requests
-import json
 endpoint = "http://sis.rutgers.edu/oldsoc/courses.json?semester=12022&campus=NB&level=UG&subject="
 codemap = dict()
 dptcodes = []
 
 
 def organize_codes():
-    f = open("src/dpt_codes.txt", "r")
+    f = open("src/static/dpt_codes.txt", "r")
     lines = f.readlines()
     for line in lines:
         code = line[0:3]
@@ -15,7 +14,7 @@ def organize_codes():
 
 def get_requests():
     first = True
-    with open('all_responses.json', 'w') as f:
+    with open('src/static/all_responses.json', 'w') as f:
         f.write("[")
         for i, code in enumerate(dptcodes):
             response = requests.get(endpoint+str(code))
