@@ -1,4 +1,5 @@
 from schedule import Schedule
+from course import Course
 
 import itertools as it
 
@@ -29,19 +30,34 @@ def main():
     # Generates all combinations of core courses, minimizing on overlapping cores and number of courses
     pass
 
+# Populates unfulfilled_cores list with core codes
 def fetch_cores():
     pass
 
+# Uses unfulfilled_cores list as keys to fetch all cores with corresponding courses from SoC
 def populate_core_dict():
-    pass
+    for core_name in unfulfilled_cores:
+        core_courses_dict[core_name] = []
+    
+    for core_name in unfulfilled_cores:
+        for course in soc_course_list:
+            # Create course object
+            # Populate course fields with json stuff
+            new_course = Course()
+            core_courses_dict[core_name].append(new_course)
 
+
+# Generates all combinations of core courses
 def generate_combinations():
     # core_courses_dict
     
-    keys, values = zip(*core_courses_dict.items())
-    permutations_dicts = [dict(zip(keys, v)) for v in it.product(*values)]
-    # Has format:
-    # [{'CORE1':COURSE1A, 'CORE2':COURSE2A, 'CORE3':COURSE3A}, 
-    # {'CORE1':COURSE1A, 'CORE2':COURSE2A, 'CORE3':COURSE3B},
-    # ...
-    # ]
+    combinations = it.product(*(core_courses_dict[core] for core in unfulfilled_cores))
+    # Format: [(Core1a, Core2a, Core3a), (Core1a, Core2a, Core3b), ...] 
+
+    good_schedules = []
+    # Minimize schedules on number of courses
+    for sched in combinations:
+        if len(sched) < len(unfulfilled_cores):
+            good_schedules.append(sched)
+
+    
