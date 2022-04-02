@@ -2,7 +2,7 @@ import ratemyprofessor
 
 
 class Course:
-    def __init__(self, name) -> None:
+    def __init__(self, name, code, core) -> None:
         self.name = name
         self.code = None
         self.core = None
