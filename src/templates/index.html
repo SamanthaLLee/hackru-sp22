@@ -38,36 +38,37 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core Selection</div>
-                        <form action="/action_page.php">
-                            <input type="checkbox" id="opt1" name="opt1" value="CCD">
-                            <label for="opt1"> CCD </label> <br>
-                            <input type="checkbox" id="vehicle2" name="vehicle2" value="CCO">
-                            <label for="vehicle2"> CCO </label> <br>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="NS">
-                            <label for="vehicle3"> NS </label> <br>
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="HST">
-                            <label for="vehicle1"> HST </label> <br>
-                            <input type="checkbox" id="vehicle2" name="vehicle2" value="SCL">
-                            <label for="vehicle2"> SCL </label> <br>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="AHo">
-                            <label for="vehicle3"> AHo </label> <br>
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="AHp">
-                            <label for="vehicle1"> AHp </label> <br>
-                            <input type="checkbox" id="vehicle2" name="vehicle2" value="AHq">
-                            <label for="vehicle2"> AHq </label> <br>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="AHr">
-                            <label for="vehicle3"> AHr </label> <br>
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="WCr">
-                            <label for="vehicle1"> WCr </label> <br>
-                            <input type="checkbox" id="vehicle2" name="vehicle2" value="WCd">
-                            <label for="vehicle2"> WCd </label> <br>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="QQ">
-                            <label for="vehicle3"> QQ </label> <br>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="QR">
-                            <label for="vehicle3"> QR </label> <br>
-                            <br>
-                            <input type="submit" value="Submit">
-                        </form>
+                        <div class="">
+                            <form action="/action_page.php">
+                                <input type="checkbox" id="opt1" name="opt1" value="CCD">
+                                <label for="opt1"> CCD </label> <br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="CCO">
+                                <label for="vehicle2"> CCO </label> <br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="NS">
+                                <label for="vehicle3"> NS </label> <br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="HST">
+                                <label for="vehicle1"> HST </label> <br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="SCL">
+                                <label for="vehicle2"> SCL </label> <br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="AHo">
+                                <label for="vehicle3"> AHo </label> <br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="AHp">
+                                <label for="vehicle1"> AHp </label> <br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="AHq">
+                                <label for="vehicle2"> AHq </label> <br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="AHr">
+                                <label for="vehicle3"> AHr </label> <br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="WCr">
+                                <label for="vehicle1"> WCr </label> <br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="WCd">
+                                <label for="vehicle2"> WCd </label> <br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="QQ">
+                                <label for="vehicle3"> QQ </label> <br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="QR">
+                                <label for="vehicle3"> QR </label> <br>
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -80,9 +81,41 @@
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">RU Scheduled?</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    Options
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action active">
+                                            Cras justo odio
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis
+                                            in</a>
+                                        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                                        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur
+                                            ac</a>
+                                        <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum
+                                            at eros</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    Details
+                                </div>
+                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            </div>
+                        </div>
+
+
+                    </div>
                     <div class="row">
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-primary text-white mb-4">
@@ -635,11 +668,6 @@
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
                     </div>
                 </div>
             </footer>
