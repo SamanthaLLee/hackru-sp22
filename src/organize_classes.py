@@ -26,9 +26,11 @@ if __name__ == "__main__":
 
         name = d["title"]
 
-        for code in d["coreCodes"]:
-            for code in code:
-                profs.append(prof["name"])
+        if len(d["coreCodes"]) > 0:
+            for code in d["coreCodes"]:
+                for code in code:
+                    profs.append(prof["name"])
 
-        allcourses.append(Course(name))
-        serialize()
+            allcourses.append(Course(name))
+
+    serialize()
