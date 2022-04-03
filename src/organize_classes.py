@@ -27,6 +27,5 @@ if __name__ == "__main__":
             for section in json_course["sections"]:
                 for prof in section["instructors"]:
                     course_obj.professors.append(Professor(prof["name"]))
-
-
+            print(json_course["title"])
     serialize()
