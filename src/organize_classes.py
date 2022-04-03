@@ -20,13 +20,14 @@ if __name__ == "__main__":
 
     for json_course in data:
         if len(json_course["coreCodes"]) > 0:
-            course_code = json_course["offeringUnitCode"] + json_course["courseNumber"] + json_course["subject"]
-            course_obj = Course(json_course["title"], course_code, json_course["coreCodes"])
-            
+            course_code = json_course["offeringUnitCode"] + \
+                json_course["courseNumber"] + json_course["subject"]
+            course_obj = Course(
+                json_course["title"], course_code, json_course["coreCodes"])
+
             # Populate professors
             for section in json_course["sections"]:
                 for prof in section["instructors"]:
                     course_obj.professors.append(Professor(prof["name"]))
-
 
     serialize()
