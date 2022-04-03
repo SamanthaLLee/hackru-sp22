@@ -3950,8 +3950,8 @@ textarea.form-control-lg {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 0;
-  margin-bottom: 0;
+  margin:20px;
+  /* margin-bottom: 0; */
   list-style: none;
 }
 

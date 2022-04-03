@@ -29,21 +29,19 @@ unfulfilled_cores = []
 
 def main():
     global soc_courses
-    file_exists = os.path.exists('../output.dat')
+    file_exists = os.path.exists('output.dat')
 
     if file_exists:
         # Load output.dat file
-        file = open('../output.dat', 'rb')
+        file = open('output.dat', 'rb')
         soc_courses = pickle.load(file)
         file.close()
 
     # Pull courses from SoC API
     else:
         fetch_all_classes()
-        file = open('../output.dat', 'rb')
+        file = open('output.dat', 'rb')
         soc_courses = pickle.load(file)
-
-    print(unfulfilled_cores)
 
     # Store courses in core->[Course] dictionary
     populate_core_dict()
@@ -134,7 +132,7 @@ def serialize_classes():
              "AHp", "AHq", "AHr", "WCr", "WCd", "QQ", "QR"]
     allcourses = []
 
-    f = open('src/static/all_responses.json')
+    f = open('static/all_responses.json')
     data = json.load(f)
 
     for json_course in data:
@@ -150,9 +148,13 @@ def serialize_classes():
                 json_course["title"], course_code, core_list)
 
             # Populate professors
+            profs = set()
             for section in json_course["sections"]:
+                profs = set()
                 for prof in section["instructors"]:
-                    course_obj.professors.append(Professor(prof["name"]))
+                    if prof["name"] not in profs:
+                        course_obj.professors.append(Professor(prof["name"]))
+                        profs.add(prof["name"])
 
             allcourses.append(course_obj)
 

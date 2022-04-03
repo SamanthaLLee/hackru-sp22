@@ -38,49 +38,47 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core Selection</div>
-                        <div class="">
-                            <form method="POST" action="/select">
+                        <form method="POST" action="/select">
 
-                                <input type="checkbox" id="opt1" name="checkbox" value="AHo">
-                                <label for="opt1"> AHo </label> <br>
-                                <input type="checkbox" id="opt2" name="checkbox" value="AHp">
-                                <label for="opt2"> AHp </label> <br>
-                                <input type="checkbox" id="opt3" name="checkbox" value="AHq">
-                                <label for="opt3"> AHq </label> <br>
-                                <input type="checkbox" id="opt4" name="checkbox" value="AHr">
-                                <label for="opt4"> AHr </label> <br>
+                            <input type="checkbox" id="opt1" name="checkbox" value="AHo">
+                            <label for="opt1"> AHo </label> <br>
+                            <input type="checkbox" id="opt2" name="checkbox" value="AHp">
+                            <label for="opt2"> AHp </label> <br>
+                            <input type="checkbox" id="opt3" name="checkbox" value="AHq">
+                            <label for="opt3"> AHq </label> <br>
+                            <input type="checkbox" id="opt4" name="checkbox" value="AHr">
+                            <label for="opt4"> AHr </label> <br>
 
-                                <input type="checkbox" id="opt5" name="checkbox" value="CCD">
-                                <label for="opt5"> CCD </label> <br>
-                                <input type="checkbox" id="opt6" name="checkbox" value="CCO">
-                                <label for="opt6"> CCO </label> <br>
+                            <input type="checkbox" id="opt5" name="checkbox" value="CCD">
+                            <label for="opt5"> CCD </label> <br>
+                            <input type="checkbox" id="opt6" name="checkbox" value="CCO">
+                            <label for="opt6"> CCO </label> <br>
 
-                                <input type="checkbox" id="opt7" name="checkbox" value="HST">
-                                <label for="opt7"> HST </label> <br>
-                                <input type="checkbox" id="opt8" name="checkbox" value="SCL">
-                                <label for="opt8"> SCL </label> <br>
+                            <input type="checkbox" id="opt7" name="checkbox" value="HST">
+                            <label for="opt7"> HST </label> <br>
+                            <input type="checkbox" id="opt8" name="checkbox" value="SCL">
+                            <label for="opt8"> SCL </label> <br>
 
-                                <input type="checkbox" id="opt9" name="checkbox" value="NS">
-                                <label for="opt9"> NS </label> <br>
+                            <input type="checkbox" id="opt9" name="checkbox" value="NS">
+                            <label for="opt9"> NS </label> <br>
 
-                                <input type="checkbox" id="opt10" name="checkbox" value="QQ">
-                                <label for="opt10"> QQ </label> <br>
-                                <input type="checkbox" id="opt11" name="checkbox" value="QR">
-                                <label for="opt11"> QR </label> <br>
+                            <input type="checkbox" id="opt10" name="checkbox" value="QQ">
+                            <label for="opt10"> QQ </label> <br>
+                            <input type="checkbox" id="opt11" name="checkbox" value="QR">
+                            <label for="opt11"> QR </label> <br>
 
-                                <input type="checkbox" id="opt12" name="checkbox" value="WCr">
-                                <label for="opt12"> WCr </label> <br>
-                                <input type="checkbox" id="opt13" name="checkbox" value="WCd">
-                                <label for="opt13"> WCd </label> <br>
+                            <input type="checkbox" id="opt12" name="checkbox" value="WCr">
+                            <label for="opt12"> WCr </label> <br>
+                            <input type="checkbox" id="opt13" name="checkbox" value="WCd">
+                            <label for="opt13"> WCd </label> <br>
 
-                                <input type="submit" value="Submit">
-                            </form>
-                        </div>
+                            <input type="submit" value="Submit">
+                        </form>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    SAS_Student_123
                 </div>
             </nav>
         </div>
@@ -126,7 +124,8 @@
                                         <details>
                                             <summary>{{course.name}}</summary>
                                             <ul>
-                                                <li>Cores: {{course.cores[0]}}</li>
+
+                                                <li>Cores: {% for core in course.cores %} {{core}} {% endfor %}</li>
                                                 <li>Code: {{course.code}}</li>
                                                 <li>Professors:
                                                     {% for prof in course.professors %}
@@ -142,34 +141,13 @@
                                                 </li>
                                             </ul>
                                         </details>
+                                        <br>
 
                                         {% endfor %}
                                         {% endfor %}
                                     </div>
                                 </div>
-                                <div class="card-body hidden">
-                                    {% if len > 0 %}
-                                    {% for i in range(0, len) %}
-                                    {% if i == 0 %}
-                                    <div id="class-details" class="scrollable course-details visible">
-                                        {% for course in schedules[i] %}
-                                        <ul>
-                                            <li>{{course.name}}</li>
-                                        </ul>
-                                        {% endfor %}
-                                    </div>
-                                    {% else %}
-                                    <div id="class-details" class="scrollable course-details hidden">
-                                        {% for course in schedules[i] %}
-                                        <ul>
-                                            <li>{{course.name}}</li>
-                                        </ul>
-                                        {% endfor %}
-                                    </div>
-                                    {% endif %}
-                                    {% endfor %}
-                                    {% endif %}
-                                </div>
+
                             </div>
                         </div>
 
@@ -180,7 +158,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                        <div class="text-muted">Made with ❤️ @ HackRU Spring 2022</div>
                     </div>
                 </div>
             </footer>
