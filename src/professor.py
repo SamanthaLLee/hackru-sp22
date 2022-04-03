@@ -14,7 +14,7 @@ class Professor:
     
     # Finds best matching professor from RMP and populates rating, difficulty, and department
     def get_RMP(self):
-        professor = ratemyprofessor.get_professors_by_school_and_name(correct_rutgers, self.name)
+        professor = ratemyprofessor.get_professor_by_school_and_name(correct_rutgers, self.name)
 
         if professor is not None:
             self.diff = professor.difficulty
