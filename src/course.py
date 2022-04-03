@@ -1,5 +1,6 @@
 import ratemyprofessor
 
+from professor import Professor
 
 class Course:
     def __init__(self, name, code, core) -> None:
@@ -13,4 +14,10 @@ class Course:
         # self.status = None
         # self.index = None
 
-        self.professor_names = []
+        self.professors = []
+    
+    def __eq__(self, other):
+            return self.code == other.code
+            
+    def __hash__(self):
+        return hash(self.code)
