@@ -29,19 +29,21 @@ unfulfilled_cores = []
 
 def main():
     global soc_courses
-    file_exists = os.path.exists('output.dat')
+    file_exists = os.path.exists('../output.dat')
 
     if file_exists:
         # Load output.dat file
-        file = open('output.dat', 'rb')
+        file = open('../output.dat', 'rb')
         soc_courses = pickle.load(file)
         file.close()
 
     # Pull courses from SoC API
     else:
         fetch_all_classes()
-        file = open('output.dat', 'rb')
+        file = open('../output.dat', 'rb')
         soc_courses = pickle.load(file)
+
+    print(unfulfilled_cores)
 
     # Store courses in core->[Course] dictionary
     populate_core_dict()
@@ -62,8 +64,6 @@ def populate_core_dict():
         for core in course.cores:
             if core in unfulfilled_cores:
                 core_courses_dict[core].append(course)
-
-    print(core_courses_dict)
 
 
 def generate_combinations():
@@ -91,7 +91,7 @@ def fetch_all_classes():
     """
     print("fetch_all_classes")
     dpt_codes = []
-    f = open("src/static/dpt_codes.txt", "r")
+    f = open("static/dpt_codes.txt", "r")
     lines = f.readlines()
     for line in lines:
         code = line[0:3]
@@ -108,7 +108,7 @@ def create_JSON_file(dpt_codes):
     """
     endpoint = "http://sis.rutgers.edu/oldsoc/courses.json?semester=12022&campus=NB&level=UG&subject="
     first = True
-    with open('src/static/all_responses.json', 'w') as f:
+    with open('static/all_responses.json', 'w') as f:
         f.write("[")
         for i, code in enumerate(dpt_codes):
             response = requests.get(endpoint+str(code))

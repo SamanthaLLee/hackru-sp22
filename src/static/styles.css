@@ -4557,6 +4557,23 @@ textarea.form-control-lg {
   border-top: 0;
 }
 
+.scrollable{
+  height: calc(60vh);
+  overflow-y: scroll
+}
+
+.course-details{
+  position:absolute;
+}
+
+.hidden{
+  display: none;
+}
+
+.visible{
+  display: inline;
+}
+
 .card-body {
   flex: 1 1 auto;
   padding: 1rem 1rem;
