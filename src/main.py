@@ -68,16 +68,20 @@ def generate_combinations():
     """
     Generates all combinations of core courses
     """
-    # core_courses_dict
-
+    global good_schedules
+    good_schedules = []
     combinations = it.product(
         *(core_courses_dict[core] for core in unfulfilled_cores))
     # Format: [(Core1a, Core2a, Core3a), (Core1a, Core2a, Core3b), ...]
 
     # Minimize schedules on number of courses
+    min = len(unfulfilled_cores)
     for sched in combinations:
-        if len(sched) <= len(unfulfilled_cores):
-            good_schedules.append(sched)
+        sched = tuple(set(sched))
+        if len(sched) < min:
+            min = len(sched)
+            good_schedules = []
+        good_schedules.append(sched)
 
     # Sort good_schedules on number of classes in schedule
     good_schedules.sort(key=len)
@@ -128,8 +132,6 @@ def serialize_classes():
     """
     Serializes core classes
     """
-    cores = ["CCD", "CCO", "NS", "HST", "SCL", "AHo",
-             "AHp", "AHq", "AHr", "WCr", "WCd", "QQ", "QR"]
     allcourses = []
 
     f = open('static/all_responses.json')
@@ -150,7 +152,6 @@ def serialize_classes():
             # Populate professors
             profs = set()
             for section in json_course["sections"]:
-                profs = set()
                 for prof in section["instructors"]:
                     if prof["name"] not in profs:
                         course_obj.professors.append(Professor(prof["name"]))
